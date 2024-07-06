@@ -401,11 +401,11 @@ static void at_uart_init(void)
     uart_set_pin(esp_at_uart_port, tx_pin, rx_pin, rts_pin, cts_pin);
     //Install UART driver, and get the queue.
     //uart_driver_install(esp_at_uart_port, 2048, 8192, 30,&esp_at_uart_queue,0);
-    uart_driver_install(esp_at_uart_port, 1024*16, 8192, 30,&esp_at_uart_queue,0);
+    uart_driver_install(esp_at_uart_port, 1024*16, 8192, 100,&esp_at_uart_queue,0);
 #else
     //Install UART driver, and get the queue.
     //uart_driver_install(esp_at_uart_port, 1024, 2048, 16, &esp_at_uart_queue, 0);
-    uart_driver_install(esp_at_uart_port, 1024*16, 4096, 200, &esp_at_uart_queue, 0);
+    uart_driver_install(esp_at_uart_port, 1024*8, 4096, 200, &esp_at_uart_queue, 0);
     if ((tx_pin == 15) && (rx_pin == 13)) {         // swap pin
         uart_enable_swap();
         assert((cts_pin == -1) || (cts_pin == 3));
