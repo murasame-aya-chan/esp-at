@@ -79,12 +79,12 @@ static const uint8_t esp_at_uart_parity_table[] = {UART_PARITY_DISABLE, UART_PAR
 #define CONFIG_AT_UART_PORT                         UART_NUM_1
 #endif
 #define AT_UART_BAUD_RATE_MAX                  5000000
-#define AT_UART_BAUD_RATE_MIN                       80
+#define AT_UART_BAUD_RATE_MIN                       1200
 #elif defined(CONFIG_IDF_TARGET_ESP8266)
-#define CONFIG_AT_UART_PORT_TX_PIN_DEFAULT          15
-#define CONFIG_AT_UART_PORT_RX_PIN_DEFAULT          13
-#define CONFIG_AT_UART_PORT_CTS_PIN_DEFAULT         3
-#define CONFIG_AT_UART_PORT_RTS_PIN_DEFAULT         1
+#define CONFIG_AT_UART_PORT_TX_PIN_DEFAULT          1
+#define CONFIG_AT_UART_PORT_RX_PIN_DEFAULT          3
+#define CONFIG_AT_UART_PORT_CTS_PIN_DEFAULT         13
+#define CONFIG_AT_UART_PORT_RTS_PIN_DEFAULT         15
 #ifndef CONFIG_AT_UART_PORT
 #define CONFIG_AT_UART_PORT                         UART_NUM_0
 #endif
@@ -403,7 +403,8 @@ static void at_uart_init(void)
     uart_driver_install(esp_at_uart_port, 2048, 8192, 30,&esp_at_uart_queue,0);
 #else
     //Install UART driver, and get the queue.
-    uart_driver_install(esp_at_uart_port, 1024, 2048, 16, &esp_at_uart_queue, 0);
+    //uart_driver_install(esp_at_uart_port, 1024, 2048, 16, &esp_at_uart_queue, 0);
+    uart_driver_install(esp_at_uart_port, 4096, 2048, 20, &esp_at_uart_queue, 0);
     if ((tx_pin == 15) && (rx_pin == 13)) {         // swap pin
         uart_enable_swap();
         assert((cts_pin == -1) || (cts_pin == 3));
