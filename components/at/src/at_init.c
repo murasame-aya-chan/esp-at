@@ -71,10 +71,14 @@ esp_err_t esp_at_netif_init(void)
 
 static void at_module_init(void)
 {
-#define AT_TEMP_BUFFER_SIZE     256
+#define AT_TEMP_BUFFER_SIZE     512
     int ret = 0;
     uint8_t *version = (uint8_t *)malloc(AT_TEMP_BUFFER_SIZE);
+    /// add company info
     ret = snprintf((char *)version, AT_TEMP_BUFFER_SIZE,
+                   "company: HY\r\n");
+
+    ret += snprintf((char *)version + ret, AT_TEMP_BUFFER_SIZE - ret,
                    "compile time(%s):%s %s\r\n", ESP_AT_PROJECT_COMMIT_ID, __DATE__, __TIME__);
 
 #ifdef CONFIG_ESP_AT_FW_VERSION

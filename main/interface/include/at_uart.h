@@ -26,7 +26,7 @@
  *                Macros
  *******************************************************/
 #define AT_UART_BAUD_RATE_MAX                       SOC_UART_BITRATE_MAX    /**< maximum uart baud rate */
-#define AT_UART_BAUD_RATE_MIN                       80                      /**< minimum uart baud rate */
+#define AT_UART_BAUD_RATE_MIN                       1200                    /**< minimum uart baud rate */
 #define AT_UART_BAUD_RATE_DEF                       115200                  /**< default uart baud rate */
 #define AT_UART_PATTERN_TIMEOUT_MS                  20                      /**< uart pattern timeout */
 
@@ -41,7 +41,7 @@
 #else
 #define AT_UART_RX_BUFFER_SIZE                      2048                    /**< uart rx buffer size */
 #define AT_UART_TX_BUFFER_SIZE                      8192                    /**< uart tx buffer size */
-#define AT_UART_QUEUE_SIZE                          30                      /**< uart queue size */
+#define AT_UART_QUEUE_SIZE                          2000                    /**< uart queue size */
 #endif
 
 /**
@@ -62,10 +62,10 @@
 #endif
 
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
-#define CONFIG_AT_UART_PORT_TX_PIN_DEFAULT          7
-#define CONFIG_AT_UART_PORT_RX_PIN_DEFAULT          6
-#define CONFIG_AT_UART_PORT_CTS_PIN_DEFAULT         5
-#define CONFIG_AT_UART_PORT_RTS_PIN_DEFAULT         4
+#define CONFIG_AT_UART_PORT_TX_PIN_DEFAULT          16
+#define CONFIG_AT_UART_PORT_RX_PIN_DEFAULT          17
+#define CONFIG_AT_UART_PORT_CTS_PIN_DEFAULT         15
+#define CONFIG_AT_UART_PORT_RTS_PIN_DEFAULT         14
 #endif
 
 #if defined(CONFIG_IDF_TARGET_ESP32C2)
