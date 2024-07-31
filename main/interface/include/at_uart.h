@@ -26,7 +26,7 @@
  *                Macros
  *******************************************************/
 #define AT_UART_BAUD_RATE_MAX                       SOC_UART_BITRATE_MAX    /**< maximum uart baud rate */
-#define AT_UART_BAUD_RATE_MIN                       2400                    /**< minimum uart baud rate */
+#define AT_UART_BAUD_RATE_MIN                       80                    /**< minimum uart baud rate */
 #define AT_UART_BAUD_RATE_DEF                       115200                  /**< default uart baud rate */
 #define AT_UART_PATTERN_TIMEOUT_MS                  20                      /**< uart pattern timeout */
 
