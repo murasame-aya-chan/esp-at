@@ -26,7 +26,7 @@
  *                Macros
  *******************************************************/
 #define AT_UART_BAUD_RATE_MAX                       SOC_UART_BITRATE_MAX    /**< maximum uart baud rate */
-#define AT_UART_BAUD_RATE_MIN                       80                    /**< minimum uart baud rate */
+#define AT_UART_BAUD_RATE_MIN                       2400                    /**< minimum uart baud rate */
 #define AT_UART_BAUD_RATE_DEF                       115200                  /**< default uart baud rate */
 #define AT_UART_PATTERN_TIMEOUT_MS                  20                      /**< uart pattern timeout */
 
@@ -41,7 +41,7 @@
 #else
 #define AT_UART_RX_BUFFER_SIZE                      2048                    /**< uart rx buffer size */
 #define AT_UART_TX_BUFFER_SIZE                      4096                    /**< uart tx buffer size */
-#define AT_UART_QUEUE_SIZE                          3000                    /**< uart queue size */
+#define AT_UART_QUEUE_SIZE                          10000                   /**< uart queue size */
 #endif
 
 /**
